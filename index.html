@@ -40,9 +40,32 @@
       color: #ff6600;
     }
 
-    /* --- NOVAS ANIMAÇÕES E EFEITOS DE HOVER --- */
+    /* --- NOVOS ESTILOS PARA FOTO DE PERFIL --- */
+    .about-me-container {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%; /* Deixa a foto redonda */
+      border: 3px solid #ff6600; /* Borda com a cor do tema */
+      object-fit: cover; /* Garante que a foto preencha o espaço sem distorcer */
+    }
+    .about-me-text {
+      flex: 1; /* Ocupa o espaço restante */
+    }
+    /* Deixa a seção "Sobre Mim" responsiva */
+    @media (max-width: 768px) {
+      .about-me-container {
+        flex-direction: column; /* Coloca a foto em cima do texto em telas menores */
+        text-align: center;
+      }
+    }
 
-    /* Efeito de hover nas habilidades */
+    /* --- ANIMAÇÕES E EFEITOS DE HOVER --- */
+
     ul.skills {
       display: flex;
       flex-wrap: wrap;
@@ -54,28 +77,26 @@
       border: 1px solid #ff6600;
       padding: 8px 12px;
       border-radius: 4px;
-      transition: transform 0.3s ease, background-color 0.3s ease; /* Transição suave */
+      transition: transform 0.3s ease, background-color 0.3s ease;
     }
     ul.skills li:hover {
-      transform: translateY(-5px); /* Move o item para cima */
-      background-color: #ff6600; /* Muda a cor de fundo */
+      transform: translateY(-5px);
+      background-color: #ff6600;
     }
     
-    /* Efeito de hover nos projetos */
     .project {
       background: #1a1a1a;
       padding: 20px;
       border-radius: 8px;
       margin-bottom: 20px;
       border-left: 4px solid #ff6600;
-      transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .project:hover {
-      transform: scale(1.03); /* Aumenta o card */
-      box-shadow: 0 4px 20px rgba(255, 102, 0, 0.2); /* Adiciona uma sombra laranja */
+      transform: scale(1.03);
+      box-shadow: 0 4px 20px rgba(255, 102, 0, 0.2);
     }
     
-    /* Classes para a animação de scroll */
     .fade-in-section {
       opacity: 0;
       transform: translateY(20px);
@@ -86,7 +107,6 @@
       transform: translateY(0);
     }
     
-    /* Cursor piscando para o efeito de digitação */
     #typing-subtitle::after {
       content: '|';
       animation: blink 0.7s infinite;
@@ -115,10 +135,17 @@
 
   <section class="fade-in-section">
     <h2>Sobre Mim</h2>
-    <p>
-      Sou um desenvolvedor full-stack com foco em construir soluções web modernas e funcionais. Possuo formação técnica pela ETEC em Desenvolvimento de Sistemas e atualmente curso Análise e Desenvolvimento de Sistemas na FATEC Ipiranga.
-      Tenho experiência prática com projetos pessoais e acadêmicos usando Angular, Node.js, Python, PostgreSQL, entre outras tecnologias. Me interesso por desenvolvimento de sistemas eficientes e que resolvam problemas reais.
-    </p>
+    <div class="about-me-container">
+      <img src="Perfil.jpg" alt="Foto de perfil de Jefferson Silva" class="profile-pic">
+      <div class="about-me-text">
+        <p>
+          Sou um desenvolvedor full-stack com foco em construir soluções web modernas e funcionais. Possuo formação técnica pela ETEC em Desenvolvimento de Sistemas e atualmente curso Análise e Desenvolvimento de Sistemas na FATEC Ipiranga.
+        </p>
+        <p>
+          Tenho experiência prática com projetos pessoais e acadêmicos usando Angular, Node.js, Python, PostgreSQL, entre outras tecnologias. Me interesso por desenvolvimento de sistemas eficientes e que resolvam problemas reais.
+        </p>
+      </div>
+    </div>
   </section>
 
   <section class="fade-in-section">
@@ -144,11 +171,35 @@
       <p>Aplicação de e-commerce com carrinho, login, banners e sistema de checkout. Front-end em Angular com integração a backend Node.js e banco PostgreSQL.</p>
       <a href="https://github.com/Jefinhozit0/ArmazemAngular" target="_blank">Ver no GitHub</a>
     </div>
-
+    
     <div class="project">
       <h3>CRM para Clínicas</h3>
       <p>Sistema em desenvolvimento para controle de consultas particulares com agendamento, histórico e cadastro de pacientes.</p>
       <span>Privado - projeto em desenvolvimento</span>
+    </div>
+
+    <div class="project">
+      <h3>Quadro de Tarefas (Kanban)</h3>
+      <p>Sistema de quadro de tarefas no estilo Kanban para organizar atividades, permitindo arrastar e soltar cartões entre colunas.</p>
+      <a href="https://github.com/Jefinhozit0/Meu-Quadro-de-Tarefas" target="_blank">Ver no GitHub</a>
+    </div>
+
+    <div class="project">
+      <h3>Monitor de Preços Online</h3>
+      <p>Ferramenta de web scraping para monitorar e notificar sobre alterações de preços de produtos em lojas virtuais.</p>
+      <a href="https://github.com/Jefinhozit0/Monitor-de-precos-online" target="_blank">Ver no GitHub</a>
+    </div>
+    
+    <div class="project">
+      <h3>Calculadora de Gorjetas</h3>
+      <p>Aplicação interativa para calcular gorjetas e dividir a conta total entre várias pessoas. Feito com HTML, CSS e JavaScript.</p>
+      <a href="https://github.com/Jefinhozit0/Calculadora-de-gorjetas" target="_blank">Ver no GitHub</a>
+    </div>
+
+    <div class="project">
+      <h3>Jogo Adivinhe o Número</h3>
+      <p>Divertido jogo onde o usuário tenta adivinhar um número secreto gerado pelo computador, recebendo dicas a cada tentativa.</p>
+      <a href="https://github.com/Jefinhozit0/Jogo-adivinhe-o-numero" target="_blank">Ver no GitHub</a>
     </div>
   </section>
 
@@ -160,7 +211,7 @@
 
   <section class="fade-in-section">
     <h2>Contato</h2>
-    <p>Email: <a href="mailto:jefinhozit00@gmail.com">jefinhozit00@gmail.com</a></p>
+    <p>Email: <a href="mailto:jefferson@email.com">jefferson@email.com</a></p>
     <p>LinkedIn: <a href="https://linkedin.com/in/jefferson7-dev" target="_blank">linkedin.com/in/jefferson7-dev</a></p>
     <p>GitHub: <a href="https://github.com/Jefinhozit0" target="_blank">github.com/Jefinhozit0</a></p>
   </section>
