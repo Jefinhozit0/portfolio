@@ -4,68 +4,326 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jefferson Silva | Desenvolvedor Full-Stack</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="description" content="Portfólio de Jefferson Silva — desenvolvedor full-stack com foco em TypeScript, Angular, Node.js e soluções com IA. Veja projetos, stack e formação." />
+  <meta name="author" content="Jefferson Silva" />
+  <meta name="theme-color" content="#ff6600" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Jefferson Silva | Desenvolvedor Full-Stack" />
+  <meta property="og:description" content="Desenvolvedor full-stack com foco em TypeScript, Angular, Node.js e soluções com IA." />
+  <meta property="og:image" content="Perfil.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23ff6600'/%3E%3Ctext x='50' y='68' font-size='62' font-family='Inter,sans-serif' font-weight='700' text-anchor='middle' fill='%23111'%3EJ%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Structured data: Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jefferson Silva",
+    "jobTitle": "Desenvolvedor Full-Stack",
+    "url": "https://github.com/Jefinhozit0",
+    "email": "mailto:ti@tntfit.com.br",
+    "sameAs": [
+      "https://github.com/Jefinhozit0",
+      "https://linkedin.com/in/jefferson7-dev"
+    ],
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "FATEC Ipiranga" },
+      { "@type": "EducationalOrganization", "name": "ETEC" }
+    ],
+    "knowsAbout": ["TypeScript", "Angular", "Node.js", "Python", "PostgreSQL", "Machine Learning", "IA Explicável"]
+  }
+  </script>
+
+  <script>
+    // Aplica tema e idioma o quanto antes para evitar flash
+    (function () {
+      try {
+        const savedTheme = localStorage.getItem('theme');
+        const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        document.documentElement.setAttribute('data-theme', savedTheme || (prefersLight ? 'light' : 'dark'));
+
+        const savedLang = localStorage.getItem('lang');
+        const browserLang = (navigator.language || 'pt').toLowerCase().startsWith('en') ? 'en' : 'pt';
+        document.documentElement.setAttribute('lang', savedLang || browserLang);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        document.documentElement.setAttribute('lang', 'pt-br');
+      }
+    })();
+  </script>
+
   <style>
-    /* Estilos Iniciais (sem alterações) */
+    :root {
+      --bg: #0d0d0f;
+      --text: #f1f1f1;
+      --text-muted: #c5c5c5;
+      --text-faded: #888;
+      --nav-bg: rgba(13, 13, 15, 0.75);
+      --nav-text: #ccc;
+      --nav-border: rgba(255, 102, 0, 0.15);
+      --card-bg: #16161a;
+      --card-border: #222;
+      --card-border-hover: #ff8533;
+      --chip-bg: #1a1a1d;
+      --tag-bg: #0d0d0f;
+      --tag-border: #2a2a2e;
+      --tag-text: #aaa;
+      --footer-bg: #050505;
+      --footer-text: #666;
+      --footer-border: #1a1a1a;
+      --accent: #ff6600;
+      --accent-soft: #ff8533;
+      --btn-primary-bg: #111;
+      --btn-primary-text: #fff;
+      --btn-outline-color: #fff;
+      --shadow-card: rgba(255, 102, 0, 0.15);
+      --shadow-pic: rgba(255, 102, 0, 0.25);
+      --grid-line: rgba(255, 255, 255, 0.05);
+      --timeline-line: #2a2a2e;
+    }
+
+    [data-theme="light"] {
+      --bg: #f7f7f5;
+      --text: #1a1a1a;
+      --text-muted: #3a3a3a;
+      --text-faded: #6a6a6a;
+      --nav-bg: rgba(247, 247, 245, 0.85);
+      --nav-text: #444;
+      --nav-border: rgba(255, 102, 0, 0.3);
+      --card-bg: #ffffff;
+      --card-border: #e5e5e0;
+      --card-border-hover: #ff6600;
+      --chip-bg: #ffffff;
+      --tag-bg: #f0f0ec;
+      --tag-border: #d8d8d2;
+      --tag-text: #555;
+      --footer-bg: #ececea;
+      --footer-text: #555;
+      --footer-border: #d8d8d2;
+      --btn-primary-bg: #111;
+      --btn-primary-text: #fff;
+      --btn-outline-color: #fff;
+      --shadow-card: rgba(0, 0, 0, 0.1);
+      --shadow-pic: rgba(255, 102, 0, 0.35);
+      --grid-line: rgba(255, 255, 255, 0.18);
+      --timeline-line: #d8d8d2;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; } /* Para rolagem suave */
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #111;
-      color: #fff;
+      background-color: var(--bg);
+      color: var(--text);
       line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
+
+    /* Skip link (a11y) */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 8px;
+      background: #111;
+      color: #ff6600;
+      padding: 8px 14px;
+      border-radius: 4px;
+      z-index: 1000;
+      transition: top 0.2s ease;
+      font-weight: 600;
+    }
+    .skip-link:focus { top: 8px; text-decoration: none; }
+
+    /* Scroll progress bar */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, #ff6600, #ff8533, #ff6600);
+      background-size: 200% 100%;
+      animation: shimmer 3s linear infinite;
+      z-index: 100;
+      transition: width 0.1s linear;
+    }
+    @keyframes shimmer {
+      0% { background-position: 0% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    /* Nav fixo */
+    nav.topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: var(--nav-bg);
+      border-bottom: 1px solid var(--nav-border);
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+    nav.topbar .brand { font-weight: 700; color: var(--accent); }
+    nav.topbar .right { display: flex; align-items: center; gap: 14px; }
+    nav.topbar ul { display: flex; gap: 22px; list-style: none; }
+    nav.topbar ul a { color: var(--nav-text); font-size: 0.95rem; transition: color 0.2s ease; }
+    nav.topbar ul a:hover { color: var(--accent); text-decoration: none; }
+
+    .icon-btn {
+      background: transparent;
+      border: 1px solid var(--nav-border);
+      color: var(--nav-text);
+      height: 36px;
+      min-width: 36px;
+      padding: 0 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .icon-btn:hover { color: var(--accent); border-color: var(--accent); }
+    .theme-toggle:hover { transform: rotate(15deg); }
+    .theme-toggle svg { width: 18px; height: 18px; }
+    .theme-toggle .icon-sun { display: none; }
+    .theme-toggle .icon-moon { display: block; }
+    [data-theme="light"] .theme-toggle .icon-sun { display: block; }
+    [data-theme="light"] .theme-toggle .icon-moon { display: none; }
+
+    @media (max-width: 720px) {
+      nav.topbar ul { gap: 12px; }
+      nav.topbar ul a { font-size: 0.85rem; }
+      nav.topbar .right { gap: 8px; }
+    }
+    @media (max-width: 480px) {
+      nav.topbar ul li:nth-child(n+3) { display: none; }
+    }
+
+    /* Header com gradiente sutil (sempre laranja) */
     header {
-      background-color: #ff6600;
-      padding: 60px 20px; /* Mais espaço vertical */
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255, 140, 50, 0.25), transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 102, 0, 0.35), transparent 55%),
+        linear-gradient(135deg, #ff6600 0%, #c44500 100%);
+      padding: 90px 20px 80px;
       text-align: center;
-      min-height: 250px; /* Altura mínima para o efeito de digitação */
+      min-height: 320px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      position: relative;
+      overflow: hidden;
+      color: #fff;
     }
-    header h1 { font-size: 2.8rem; } /* Leve aumento */
-    header p { font-size: 1.2rem; margin-top: 10px; }
-    
+    header .grid-bg {
+      position: absolute;
+      inset: -20% 0;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+      transform: translateY(var(--parallax-y, 0));
+      transition: transform 0.05s linear;
+    }
+    header h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      position: relative;
+      background: linear-gradient(90deg, #fff 0%, #fff5ec 30%, #ffd9b3 50%, #fff5ec 70%, #fff 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shineText 5s linear infinite;
+    }
+    @keyframes shineText {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+    header p { font-size: 1.25rem; margin-top: 12px; position: relative; min-height: 1.5em; }
+    .header-cta { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; position: relative; }
+    .btn {
+      padding: 12px 22px;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary {
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      border: 2px solid var(--btn-primary-bg);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.4); text-decoration: none; }
+    .btn-outline {
+      background: transparent;
+      color: var(--btn-outline-color);
+      border: 2px solid var(--btn-outline-color);
+    }
+    .btn-outline:hover { background: #fff; color: var(--accent); text-decoration: none; }
+
     section {
-      padding: 60px 20px; /* Mais espaçamento */
-      max-width: 900px;
+      padding: 70px 20px;
+      max-width: 960px;
       margin: auto;
     }
-    
+
     h2 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      color: #ff6600;
+      font-size: 2rem;
+      margin-bottom: 28px;
+      color: var(--accent);
+      letter-spacing: -0.3px;
+    }
+    h2::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 3px;
+      background: var(--accent);
+      margin-top: 8px;
+      border-radius: 2px;
     }
 
-    /* --- NOVOS ESTILOS PARA FOTO DE PERFIL --- */
     .about-me-container {
       display: flex;
       align-items: center;
-      gap: 30px;
+      gap: 36px;
     }
     .profile-pic {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%; /* Deixa a foto redonda */
-      border: 3px solid #ff6600; /* Borda com a cor do tema */
-      object-fit: cover; /* Garante que a foto preencha o espaço sem distorcer */
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      object-fit: cover;
+      box-shadow: 0 8px 30px var(--shadow-pic);
     }
-    .about-me-text {
-      flex: 1; /* Ocupa o espaço restante */
-    }
-    /* Deixa a seção "Sobre Mim" responsiva */
+    .about-me-text { flex: 1; }
+    .about-me-text p + p { margin-top: 12px; }
     @media (max-width: 768px) {
-      .about-me-container {
-        flex-direction: column; /* Coloca a foto em cima do texto em telas menores */
-        text-align: center;
-      }
+      .about-me-container { flex-direction: column; text-align: center; }
+      header h1 { font-size: 2.3rem; }
     }
 
-    /* --- ANIMAÇÕES E EFEITOS DE HOVER --- */
-
+    /* Skills */
     ul.skills {
       display: flex;
       flex-wrap: wrap;
@@ -73,30 +331,235 @@
       list-style: none;
     }
     ul.skills li {
-      background: #222;
-      border: 1px solid #ff6600;
-      padding: 8px 12px;
-      border-radius: 4px;
-      transition: transform 0.3s ease, background-color 0.3s ease;
+      background: var(--chip-bg);
+      border: 1px solid rgba(255, 102, 0, 0.4);
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
     }
     ul.skills li:hover {
-      transform: translateY(-5px);
-      background-color: #ff6600;
+      transform: translateY(-3px);
+      background-color: var(--accent);
+      border-color: var(--accent);
+      color: #111;
     }
-    
+
+    /* Stats GitHub */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 18px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .stat-card .value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1.1;
+    }
+    .stat-card .label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      color: var(--text-faded);
+      letter-spacing: 0.5px;
+      margin-top: 6px;
+    }
+    .lang-bar {
+      display: flex;
+      height: 10px;
+      border-radius: 5px;
+      overflow: hidden;
+      background: var(--tag-bg);
+      margin-bottom: 12px;
+      border: 1px solid var(--card-border);
+    }
+    .lang-bar span { display: block; height: 100%; }
+    .lang-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .lang-legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .lang-legend i {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      font-style: normal;
+    }
+
+    /* Filtros */
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .filter-btn {
+      background: var(--chip-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .filter-btn.active {
+      background: var(--accent);
+      color: #111;
+      border-color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Projetos em grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
     .project {
-      background: #1a1a1a;
-      padding: 20px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      border-left: 4px solid #ff6600;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: var(--card-bg);
+      padding: 22px;
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+      border-left: 4px solid var(--accent);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.3s ease, opacity 0.3s ease;
+      display: flex;
+      flex-direction: column;
     }
     .project:hover {
-      transform: scale(1.03);
-      box-shadow: 0 4px 20px rgba(255, 102, 0, 0.2);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px var(--shadow-card);
+      border-color: var(--card-border-hover);
+      border-left-color: var(--accent);
     }
-    
+    .project.hidden { display: none; }
+    .project h3 {
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+    .project .badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(255, 102, 0, 0.15);
+      color: var(--accent-soft);
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+    }
+    [data-theme="light"] .project .badge { color: #c44500; }
+    .project p {
+      flex: 1;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+    }
+    .project .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+    .project .stack span {
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      border-radius: 4px;
+      color: var(--tag-text);
+    }
+    .project .private {
+      font-size: 0.85rem;
+      color: var(--text-faded);
+      font-style: italic;
+    }
+
+    /* Timeline (Experiência + Formação) */
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+      border-left: 2px solid var(--timeline-line);
+    }
+    .timeline-item { position: relative; padding-bottom: 26px; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -34px;
+      top: 5px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px var(--bg);
+    }
+    .timeline-item h3 {
+      font-size: 1.05rem;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+    .timeline-item .period {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-faded);
+      margin-bottom: 6px;
+    }
+    .timeline-item p { color: var(--text-muted); font-size: 0.95rem; }
+    .timeline-item ul.bullets {
+      list-style: disc;
+      padding-left: 18px;
+      margin-top: 8px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    .timeline-item ul.bullets li { margin-bottom: 4px; }
+
+    /* Contato */
+    .contact-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      list-style: none;
+    }
+    .contact-list li {
+      background: var(--card-bg);
+      padding: 16px 18px;
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      transition: border-color 0.2s ease, background-color 0.3s ease;
+    }
+    .contact-list li:hover { border-color: var(--accent); }
+    .contact-list .label {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: var(--text-faded);
+      margin-bottom: 4px;
+      letter-spacing: 0.5px;
+    }
+    .contact-list a { color: var(--text); word-break: break-all; }
+    .contact-list a:hover { color: var(--accent); }
+
     .fade-in-section {
       opacity: 0;
       transform: translateY(20px);
@@ -106,169 +569,546 @@
       opacity: 1;
       transform: translateY(0);
     }
-    
+
     #typing-subtitle::after {
       content: '|';
       animation: blink 0.7s infinite;
       color: #fff;
+      margin-left: 2px;
     }
-    @keyframes blink {
-      50% { opacity: 0; }
-    }
+    @keyframes blink { 50% { opacity: 0; } }
 
     footer {
       text-align: center;
-      padding: 20px;
-      background-color: #000;
-      color: #777;
+      padding: 26px 20px;
+      background-color: var(--footer-bg);
+      color: var(--footer-text);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--footer-border);
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     }
-    a { color: #ff6600; text-decoration: none; }
+    a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
+    /* Spotlight que segue o cursor */
+    .cursor-glow {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(
+        600px circle at var(--mx, 50%) var(--my, 50%),
+        rgba(255, 102, 0, 0.18),
+        transparent 45%
+      );
+      mix-blend-mode: screen;
+      transition: opacity 0.3s ease;
+    }
+    [data-theme="light"] .cursor-glow {
+      mix-blend-mode: multiply;
+      background: radial-gradient(
+        600px circle at var(--mx, 50%) var(--my, 50%),
+        rgba(255, 102, 0, 0.22),
+        transparent 45%
+      );
+    }
+    .cursor-dots {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background-image: radial-gradient(circle, rgba(255, 102, 0, 0.35) 1px, transparent 1.5px);
+      background-size: 28px 28px;
+      -webkit-mask-image: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), black 0%, transparent 70%);
+      mask-image: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), black 0%, transparent 70%);
+    }
+    @media (hover: none), (pointer: coarse) {
+      .cursor-glow, .cursor-dots { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .scroll-progress { animation: none; }
+    }
   </style>
 </head>
 <body>
+  <a href="#sobre" class="skip-link" data-i18n="skip">Pular para o conteúdo</a>
+
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="cursor-dots" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <nav class="topbar">
+    <span class="brand">&lt;JS /&gt;</span>
+    <div class="right">
+      <ul>
+        <li><a href="#sobre" data-i18n="nav.about">Sobre</a></li>
+        <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+        <li><a href="#projetos" data-i18n="nav.projects">Projetos</a></li>
+        <li><a href="#experiencia" data-i18n="nav.experience">Experiência</a></li>
+        <li><a href="#contato" data-i18n="nav.contact">Contato</a></li>
+      </ul>
+      <button id="lang-toggle" class="icon-btn" aria-label="Alternar idioma" title="Alternar idioma">
+        <span id="lang-label">EN</span>
+      </button>
+      <button id="theme-toggle" class="icon-btn theme-toggle" aria-label="Alternar tema claro/escuro" title="Alternar tema">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
   <header>
+    <div class="grid-bg"></div>
     <h1>Jefferson Silva</h1>
     <p><span id="typing-subtitle"></span></p>
+    <div class="header-cta">
+      <a href="#projetos" class="btn btn-primary" data-i18n="cta.projects">Ver projetos</a>
+      <a href="#contato" class="btn btn-outline" data-i18n="cta.contact">Entre em contato</a>
+      <a href="Curriculo_Jefferson-Silva.pdf" class="btn btn-outline" download data-i18n="cta.cv">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        <span>Baixar CV</span>
+      </a>
+    </div>
   </header>
 
-  <section class="fade-in-section">
-    <h2>Sobre Mim</h2>
+  <section id="sobre" class="fade-in-section">
+    <h2 data-i18n="about.title">Sobre Mim</h2>
     <div class="about-me-container">
-      <img src="Perfil.jpg" alt="Foto de perfil de Jefferson Silva" class="profile-pic">
+      <img src="Perfil.jpg" alt="Foto de perfil de Jefferson Silva" class="profile-pic" loading="lazy">
       <div class="about-me-text">
-        <p>
-          Sou um desenvolvedor full-stack com foco em construir soluções web modernas e funcionais. Possuo formação técnica pela ETEC em Desenvolvimento de Sistemas e atualmente curso Análise e Desenvolvimento de Sistemas na FATEC Ipiranga.
-        </p>
-        <p>
-          Tenho experiência prática com projetos pessoais e acadêmicos usando Angular, Node.js, Python, PostgreSQL, entre outras tecnologias. Me interesso por desenvolvimento de sistemas eficientes e que resolvam problemas reais.
-        </p>
+        <p data-i18n="about.p1">Sou desenvolvedor full-stack formado em Análise e Desenvolvimento de Sistemas pela FATEC Ipiranga, com base técnica também pela ETEC em Desenvolvimento de Sistemas. Trabalho construindo soluções web modernas com foco em TypeScript, Angular e Node.js.</p>
+        <p data-i18n="about.p2">Atualmente exploro a fundo o ecossistema de IA aplicada a produto — incluindo CRMs com motores de IA explicável e modelos de previsão de preços. Gosto de problemas reais que misturam frontend bem feito, backend robusto e dados.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="fade-in-section">
+    <h2 data-i18n="skills.title">Habilidades</h2>
+
+    <div class="stats-grid">
+      <div class="stat-card"><div class="value">15+</div><div class="label" data-i18n="stats.repos">Repositórios</div></div>
+      <div class="stat-card"><div class="value">5+</div><div class="label" data-i18n="stats.langs">Linguagens</div></div>
+      <div class="stat-card"><div class="value">2026</div><div class="label" data-i18n="stats.active">Ativo desde</div></div>
+    </div>
+
+    <div class="lang-bar" aria-label="Distribuição de linguagens">
+      <span style="background:#3178c6; width:50%"></span>
+      <span style="background:#3572A5; width:22%"></span>
+      <span style="background:#f1e05a; width:14%"></span>
+      <span style="background:#e34c26; width:9%"></span>
+      <span style="background:#563d7c; width:5%"></span>
+    </div>
+    <div class="lang-legend">
+      <span><i style="background:#3178c6"></i>TypeScript 50%</span>
+      <span><i style="background:#3572A5"></i>Python 22%</span>
+      <span><i style="background:#f1e05a"></i>JavaScript 14%</span>
+      <span><i style="background:#e34c26"></i>HTML 9%</span>
+      <span><i style="background:#563d7c"></i>CSS 5%</span>
+    </div>
+
+    <ul class="skills" style="margin-top:24px;">
+      <li>TypeScript</li>
+      <li>JavaScript</li>
+      <li>Angular</li>
+      <li>Node.js</li>
+      <li>HTML5</li>
+      <li>CSS3</li>
+      <li>Python</li>
+      <li>PostgreSQL</li>
+      <li data-i18n="skills.api">APIs REST</li>
+      <li data-i18n="skills.ml">Machine Learning</li>
+      <li>Git &amp; GitHub</li>
+      <li>Bootstrap</li>
+    </ul>
+  </section>
+
+  <section id="projetos" class="fade-in-section">
+    <h2 data-i18n="projects.title">Projetos</h2>
+
+    <div class="filters" role="tablist" aria-label="Filtrar projetos por tecnologia">
+      <button class="filter-btn active" data-filter="all" data-i18n="filter.all">Todos</button>
+      <button class="filter-btn" data-filter="typescript">TypeScript</button>
+      <button class="filter-btn" data-filter="python">Python</button>
+      <button class="filter-btn" data-filter="angular">Angular</button>
+      <button class="filter-btn" data-filter="ia">IA / ML</button>
+      <button class="filter-btn" data-filter="frontend">Frontend</button>
+    </div>
+
+    <div class="projects-grid">
+
+      <div class="project" data-tags="typescript,ia,python">
+        <span class="badge" data-i18n="badge.featured">Destaque</span>
+        <h3>CRM Wealth Management com IA</h3>
+        <p data-i18n="proj.crm">CRM para gestão de patrimônio com motor de IA explicável: recomendações e insights sobre clientes, com transparência sobre o raciocínio do modelo.</p>
+        <div class="stack"><span>TypeScript</span><span>IA</span><span>Python</span></div>
+        <a href="https://github.com/Jefinhozit0/crm-prototipo" target="_blank" rel="noopener noreferrer" data-i18n="proj.see">Ver no GitHub →</a>
+      </div>
+
+      <div class="project" data-tags="typescript,ia">
+        <span class="badge" data-i18n="badge.ml">Machine Learning</span>
+        <h3 data-i18n="proj.previsor.title">Previsor de Preços de Moradias</h3>
+        <p data-i18n="proj.previsor">Aplicação que estima preços de imóveis a partir de características do imóvel, combinando modelo preditivo e interface web.</p>
+        <div class="stack"><span>TypeScript</span><span>ML</span></div>
+        <a href="https://github.com/Jefinhozit0/Previsor-de-Precos-de-Moradias" target="_blank" rel="noopener noreferrer" data-i18n="proj.see">Ver no GitHub →</a>
+      </div>
+
+      <div class="project" data-tags="typescript">
+        <span class="badge" data-i18n="badge.backend">Backend</span>
+        <h3 data-i18n="proj.monitor.title">Sistema de Monitoramento de APIs</h3>
+        <p data-i18n="proj.monitor">Ferramenta para acompanhar a saúde de APIs externas: status, latência e disponibilidade, com dashboard e alertas.</p>
+        <div class="stack"><span>TypeScript</span><span>Node.js</span></div>
+        <a href="https://github.com/Jefinhozit0/Sistema-de-monitoramento-de-APIs" target="_blank" rel="noopener noreferrer" data-i18n="proj.see">Ver no GitHub →</a>
+      </div>
+
+      <div class="project" data-tags="angular">
+        <span class="badge" data-i18n="badge.fullstack">Full-Stack</span>
+        <h3 data-i18n="proj.loja.title">Loja Virtual Angular</h3>
+        <p data-i18n="proj.loja">E-commerce com carrinho, login, banners e checkout. Front-end em Angular integrado a backend Node.js e PostgreSQL.</p>
+        <div class="stack"><span>Angular</span><span>Node.js</span><span>PostgreSQL</span></div>
+        <a href="https://github.com/Jefinhozit0/ArmazemAngular" target="_blank" rel="noopener noreferrer" data-i18n="proj.see">Ver no GitHub →</a>
+      </div>
+
+      <div class="project" data-tags="typescript,frontend">
+        <span class="badge" data-i18n="badge.frontend">Frontend</span>
+        <h3 data-i18n="proj.abarth.title">Landing Page Abarth</h3>
+        <p data-i18n="proj.abarth">Landing page comercial inspirada na identidade visual da Abarth, com foco em performance e responsividade.</p>
+        <div class="stack"><span>TypeScript</span><span>HTML</span><span>CSS</span></div>
+        <a href="https://github.com/Jefinhozit0/Lading-Page-Abarth" target="_blank" rel="noopener noreferrer" data-i18n="proj.see">Ver no GitHub →</a>
+      </div>
+
+      <div class="project" data-tags="python">
+        <span class="badge" data-i18n="badge.tools">Produtividade</span>
+        <h3>My Trello</h3>
+        <p data-i18n="proj.trello">Quadro de tarefas estilo Kanban com drag-and-drop entre colunas, listas e cartões para organizar atividades.</p>
+        <div class="stack"><span>Python</span><span>JavaScript</span><span>HTML</span></div>
+        <a href="https://github.com/Jefinhozit0/My-Trello" target="_blank" rel="noopener noreferrer" data-i18n="proj.see">Ver no GitHub →</a>
+      </div>
+
+      <div class="project" data-tags="private">
+        <span class="badge" data-i18n="badge.private">Privado</span>
+        <h3 data-i18n="proj.clinica.title">CRM para Clínicas</h3>
+        <p data-i18n="proj.clinica">Sistema em desenvolvimento para controle de consultas particulares com agendamento, histórico e cadastro de pacientes.</p>
+        <div class="stack"><span data-i18n="proj.wip">Em desenvolvimento</span></div>
+        <span class="private" data-i18n="proj.privateNote">Repositório privado</span>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="experiencia" class="fade-in-section">
+    <h2 data-i18n="exp.title">Experiência Profissional</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3 data-i18n="exp.swot.role">Desenvolvedor Júnior Full-Stack — Swot Hub</h3>
+        <span class="period" data-i18n="exp.swot.period">Atual</span>
+        <ul class="bullets">
+          <li data-i18n="exp.swot.b1">Desenvolvimento do front-end do produto TNT Fit.</li>
+          <li data-i18n="exp.swot.b2">Desenvolvimento da API e back-end (crm-api).</li>
+          <li data-i18n="exp.swot.b3">Modelagem e manutenção do banco de dados em Supabase.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3 data-i18n="exp.calc.role">Analista de Suporte — Calcgraf</h3>
+        <span class="period" data-i18n="exp.calc.period">Abr 2025 – Out 2025</span>
+        <ul class="bullets">
+          <li data-i18n="exp.calc.b1">Correção de falhas em sistemas e apoio na resolução de incidentes críticos.</li>
+          <li data-i18n="exp.calc.b2">Análise técnica de problemas e suporte especializado a usuários.</li>
+          <li data-i18n="exp.calc.b3">Manipulação, conferência e organização de bases de dados para garantir integridade da informação.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3 data-i18n="exp.minsait.role">Jovem Aprendiz – TI — Minsait</h3>
+        <span class="period" data-i18n="exp.minsait.period">Out 2024 – Abr 2025</span>
+        <ul class="bullets">
+          <li data-i18n="exp.minsait.b1">Suporte a sistemas internos e atendimento a chamados de usuários.</li>
+          <li data-i18n="exp.minsait.b2">Manipulação de dados e auxílio na documentação de processos e manuais.</li>
+          <li data-i18n="exp.minsait.b3">Atuação colaborativa em ambiente corporativo estruturado.</li>
+        </ul>
       </div>
     </div>
   </section>
 
   <section class="fade-in-section">
-    <h2>Habilidades</h2>
-    <ul class="skills">
-      <li>HTML5</li>
-      <li>CSS3</li>
-      <li>JavaScript</li>
-      <li>Angular</li>
-      <li>Node.js</li>
-      <li>Python</li>
-      <li>PostgreSQL</li>
-      <li>Git & GitHub</li>
-      <li>Bootstrap</li>
-      <li>APIs REST</li>
+    <h2 data-i18n="edu.title">Formação Acadêmica</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>FATEC Ipiranga — Análise e Desenvolvimento de Sistemas</h3>
+        <span class="period" data-i18n="edu.fatec.period">dez 2023 – dez 2025 (concluído)</span>
+      </div>
+      <div class="timeline-item">
+        <h3 data-i18n="edu.etec.title">ETEC — Desenvolvimento de Sistemas</h3>
+        <span class="period">2021 – nov 2023 (concluído) </span>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" class="fade-in-section">
+    <h2 data-i18n="contact.title">Contato</h2>
+    <ul class="contact-list">
+      <li>
+        <span class="label">Email</span>
+        <a href="mailto:ti@tntfit.com.br">jefinhozit00@gmail.com</a>
+      </li>
+      <li>
+        <span class="label">LinkedIn</span>
+        <a href="https://linkedin.com/in/jefferson7-dev" target="_blank" rel="noopener noreferrer">linkedin.com/in/jefferson7-dev</a>
+      </li>
+      <li>
+        <span class="label">GitHub</span>
+        <a href="https://github.com/Jefinhozit0" target="_blank" rel="noopener noreferrer">github.com/Jefinhozit0</a>
+      </li>
     </ul>
   </section>
 
-  <section class="fade-in-section">
-    <h2>Projetos</h2>
-    <div class="project">
-      <h3>Loja Virtual Angular</h3>
-      <p>Aplicação de e-commerce com carrinho, login, banners e sistema de checkout. Front-end em Angular com integração a backend Node.js e banco PostgreSQL.</p>
-      <a href="https://github.com/Jefinhozit0/ArmazemAngular" target="_blank">Ver no GitHub</a>
-    </div>
-    
-    <div class="project">
-      <h3>CRM para Clínicas</h3>
-      <p>Sistema em desenvolvimento para controle de consultas particulares com agendamento, histórico e cadastro de pacientes.</p>
-      <span>Privado - projeto em desenvolvimento</span>
-    </div>
-
-    <div class="project">
-      <h3>Quadro de Tarefas (Kanban)</h3>
-      <p>Sistema de quadro de tarefas no estilo Kanban para organizar atividades, permitindo arrastar e soltar cartões entre colunas.</p>
-      <a href="https://github.com/Jefinhozit0/Meu-Quadro-de-Tarefas" target="_blank">Ver no GitHub</a>
-    </div>
-
-    <div class="project">
-      <h3>Monitor de Preços Online</h3>
-      <p>Ferramenta de web scraping para monitorar e notificar sobre alterações de preços de produtos em lojas virtuais.</p>
-      <a href="https://github.com/Jefinhozit0/Monitor-de-precos-online" target="_blank">Ver no GitHub</a>
-    </div>
-    
-    <div class="project">
-      <h3>Calculadora de Gorjetas</h3>
-      <p>Aplicação interativa para calcular gorjetas e dividir a conta total entre várias pessoas. Feito com HTML, CSS e JavaScript.</p>
-      <a href="https://github.com/Jefinhozit0/Calculadora-de-gorjetas" target="_blank">Ver no GitHub</a>
-    </div>
-
-    <div class="project">
-      <h3>Jogo Adivinhe o Número</h3>
-      <p>Divertido jogo onde o usuário tenta adivinhar um número secreto gerado pelo computador, recebendo dicas a cada tentativa.</p>
-      <a href="https://github.com/Jefinhozit0/Jogo-adivinhe-o-numero" target="_blank">Ver no GitHub</a>
-    </div>
-  </section>
-
-  <section class="fade-in-section">
-    <h2>Formação Acadêmica</h2>
-    <p><strong>FATEC Ipiranga - Análise e Desenvolvimento de Sistemas</strong><br />dez 2023 – dez 2025</p>
-    <p><strong>ETEC - Desenvolvimento de Sistemas</strong><br />2021 – nov 2023</p>
-  </section>
-
-  <section class="fade-in-section">
-    <h2>Contato</h2>
-    <p>Email: <a href="mailto:jefferson@email.com">jefferson@email.com</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/jefferson7-dev" target="_blank">linkedin.com/in/jefferson7-dev</a></p>
-    <p>GitHub: <a href="https://github.com/Jefinhozit0" target="_blank">github.com/Jefinhozit0</a></p>
-  </section>
-
   <footer>
-    <p>&copy; 2025 Jefferson Silva - Todos os direitos reservados</p>
+    <p>&copy; 2026 Jefferson Silva.</span></p>
   </footer>
 
   <script>
-    // 1. Efeito de Digitação
-    const subtitleElement = document.getElementById('typing-subtitle');
-    const titles = ["Desenvolvedor Full-Stack", "Angular | Node.js", "Python | PostgreSQL"];
-    let titleIndex = 0;
-    let charIndex = 0;
+    // ============ i18n ============
+    const I18N = {
+      pt: {
+        'skip': 'Pular para o conteúdo',
+        'nav.about': 'Sobre', 'nav.skills': 'Skills', 'nav.projects': 'Projetos',
+        'nav.experience': 'Experiência', 'nav.contact': 'Contato',
+        'cta.projects': 'Ver projetos', 'cta.contact': 'Entre em contato', 'cta.cv': 'Baixar CV',
+        'about.title': 'Sobre Mim',
+        'about.p1': 'Sou desenvolvedor full-stack formado em Análise e Desenvolvimento de Sistemas pela FATEC Ipiranga, com base técnica também pela ETEC em Desenvolvimento de Sistemas. Trabalho construindo soluções web modernas com foco em TypeScript, Angular e Node.js.',
+        'about.p2': 'Atualmente exploro a fundo o ecossistema de IA aplicada a produto — incluindo CRMs com motores de IA explicável e modelos de previsão de preços. Gosto de problemas reais que misturam frontend bem feito, backend robusto e dados.',
+        'skills.title': 'Habilidades', 'skills.api': 'APIs REST', 'skills.ml': 'Machine Learning',
+        'stats.repos': 'Repositórios', 'stats.langs': 'Linguagens', 'stats.active': 'Ativo desde',
+        'projects.title': 'Projetos',
+        'filter.all': 'Todos',
+        'badge.featured': 'Destaque', 'badge.ml': 'Machine Learning', 'badge.backend': 'Backend',
+        'badge.fullstack': 'Full-Stack', 'badge.frontend': 'Frontend', 'badge.tools': 'Produtividade',
+        'badge.private': 'Privado',
+        'proj.crm': 'CRM para gestão de patrimônio com motor de IA explicável: recomendações e insights sobre clientes, com transparência sobre o raciocínio do modelo.',
+        'proj.previsor.title': 'Previsor de Preços de Moradias',
+        'proj.previsor': 'Aplicação que estima preços de imóveis a partir de características do imóvel, combinando modelo preditivo e interface web.',
+        'proj.monitor.title': 'Sistema de Monitoramento de APIs',
+        'proj.monitor': 'Ferramenta para acompanhar a saúde de APIs externas: status, latência e disponibilidade, com dashboard e alertas.',
+        'proj.loja.title': 'Loja Virtual Angular',
+        'proj.loja': 'E-commerce com carrinho, login, banners e checkout. Front-end em Angular integrado a backend Node.js e PostgreSQL.',
+        'proj.abarth.title': 'Landing Page Abarth',
+        'proj.abarth': 'Landing page comercial inspirada na identidade visual da Abarth, com foco em performance e responsividade.',
+        'proj.trello': 'Quadro de tarefas estilo Kanban com drag-and-drop entre colunas, listas e cartões para organizar atividades.',
+        'proj.clinica.title': 'CRM para Clínicas',
+        'proj.clinica': 'Sistema em desenvolvimento para controle de consultas particulares com agendamento, histórico e cadastro de pacientes.',
+        'proj.wip': 'Em desenvolvimento', 'proj.privateNote': 'Repositório privado', 'proj.see': 'Ver no GitHub →',
+        'exp.title': 'Experiência Profissional',
+        'exp.swot.role': 'Desenvolvedor Júnior Full-Stack — Swot Hub',
+        'exp.swot.period': 'Atual',
+        'exp.swot.b1': 'Desenvolvimento do front-end do produto TNT Fit.',
+        'exp.swot.b2': 'Desenvolvimento da API e back-end (crm-api).',
+        'exp.swot.b3': 'Modelagem e manutenção do banco de dados em Supabase.',
+        'exp.calc.role': 'Analista de Suporte — Calcgraf',
+        'exp.calc.period': 'Abr 2025 – Out 2025',
+        'exp.calc.b1': 'Correção de falhas em sistemas e apoio na resolução de incidentes críticos.',
+        'exp.calc.b2': 'Análise técnica de problemas e suporte especializado a usuários.',
+        'exp.calc.b3': 'Manipulação, conferência e organização de bases de dados para garantir integridade da informação.',
+        'exp.minsait.role': 'Jovem Aprendiz – TI — Minsait',
+        'exp.minsait.period': 'Out 2024 – Abr 2025',
+        'exp.minsait.b1': 'Suporte a sistemas internos e atendimento a chamados de usuários.',
+        'exp.minsait.b2': 'Manipulação de dados e auxílio na documentação de processos e manuais.',
+        'exp.minsait.b3': 'Atuação colaborativa em ambiente corporativo estruturado.',
+        'edu.title': 'Formação Acadêmica',
+        'edu.fatec.period': 'dez 2023 – dez 2025 (concluído)',
+        'edu.etec.title': 'ETEC — Desenvolvimento de Sistemas',
+        'contact.title': 'Contato',
+        'footer.made': 'Feito com HTML, CSS e JavaScript.',
+        'typing': ['Desenvolvedor Full-Stack', 'TypeScript | Angular | Node.js', 'Python | PostgreSQL | IA']
+      },
+      en: {
+        'skip': 'Skip to content',
+        'nav.about': 'About', 'nav.skills': 'Skills', 'nav.projects': 'Projects',
+        'nav.experience': 'Experience', 'nav.contact': 'Contact',
+        'cta.projects': 'View projects', 'cta.contact': 'Get in touch', 'cta.cv': 'Download CV',
+        'about.title': 'About Me',
+        'about.p1': 'I\'m a full-stack developer with a degree in Systems Analysis and Development from FATEC Ipiranga, plus technical training from ETEC. I build modern web solutions focused on TypeScript, Angular and Node.js.',
+        'about.p2': 'I\'m currently diving deep into AI applied to product — including CRMs with explainable AI engines and price prediction models. I enjoy real problems that mix great frontend, solid backend and data.',
+        'skills.title': 'Skills', 'skills.api': 'REST APIs', 'skills.ml': 'Machine Learning',
+        'stats.repos': 'Repositories', 'stats.langs': 'Languages', 'stats.active': 'Active since',
+        'projects.title': 'Projects',
+        'filter.all': 'All',
+        'badge.featured': 'Featured', 'badge.ml': 'Machine Learning', 'badge.backend': 'Backend',
+        'badge.fullstack': 'Full-Stack', 'badge.frontend': 'Frontend', 'badge.tools': 'Productivity',
+        'badge.private': 'Private',
+        'proj.crm': 'Wealth management CRM with an explainable AI engine: client recommendations and insights, with transparency over the model\'s reasoning.',
+        'proj.previsor.title': 'Housing Price Predictor',
+        'proj.previsor': 'App that estimates property prices from real-estate features, combining a predictive model with a web interface.',
+        'proj.monitor.title': 'API Monitoring System',
+        'proj.monitor': 'Tool to track the health of external APIs: status, latency and availability, with dashboard and alerts.',
+        'proj.loja.title': 'Angular E-commerce',
+        'proj.loja': 'E-commerce with cart, login, banners and checkout. Angular frontend integrated with Node.js backend and PostgreSQL.',
+        'proj.abarth.title': 'Abarth Landing Page',
+        'proj.abarth': 'Commercial landing page inspired by Abarth\'s visual identity, focused on performance and responsiveness.',
+        'proj.trello': 'Kanban-style task board with drag-and-drop between columns, lists and cards to organize activities.',
+        'proj.clinica.title': 'CRM for Clinics',
+        'proj.clinica': 'In-progress system to manage private medical appointments: scheduling, history and patient records.',
+        'proj.wip': 'In development', 'proj.privateNote': 'Private repository', 'proj.see': 'View on GitHub →',
+        'exp.title': 'Professional Experience',
+        'exp.swot.role': 'Junior Full-Stack Developer — Swot Hub',
+        'exp.swot.period': 'Current',
+        'exp.swot.b1': 'Frontend development for the TNT Fit product.',
+        'exp.swot.b2': 'API and backend development (crm-api).',
+        'exp.swot.b3': 'Database modeling and maintenance on Supabase.',
+        'exp.calc.role': 'Support Analyst — Calcgraf',
+        'exp.calc.period': 'Apr 2025 – Oct 2025',
+        'exp.calc.b1': 'Bug fixing in systems and support resolving critical incidents.',
+        'exp.calc.b2': 'Technical problem analysis and specialized user support.',
+        'exp.calc.b3': 'Handling, reviewing and organizing databases to ensure information integrity.',
+        'exp.minsait.role': 'IT Apprentice — Minsait',
+        'exp.minsait.period': 'Oct 2024 – Apr 2025',
+        'exp.minsait.b1': 'Internal systems support and handling user tickets.',
+        'exp.minsait.b2': 'Data handling and support documenting processes and manuals.',
+        'exp.minsait.b3': 'Collaborative work in a structured corporate environment.',
+        'edu.title': 'Education',
+        'edu.fatec.period': 'Dec 2023 – Dec 2025 (completed)',
+        'edu.etec.title': 'ETEC — Systems Development (Technical degree)',
+        'contact.title': 'Contact',
+        'footer.made': 'Built with HTML, CSS and JavaScript.',
+        'typing': ['Full-Stack Developer', 'TypeScript | Angular | Node.js', 'Python | PostgreSQL | AI']
+      }
+    };
 
+    function applyLang(lang) {
+      const dict = I18N[lang] || I18N.pt;
+      document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'pt-br');
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) el.textContent = dict[key];
+      });
+      document.getElementById('lang-label').textContent = lang === 'pt' ? 'EN' : 'PT';
+      restartTyping(dict.typing);
+    }
+
+    const currentLang = () => document.documentElement.getAttribute('lang').startsWith('en') ? 'en' : 'pt';
+
+    document.getElementById('lang-toggle').addEventListener('click', () => {
+      const next = currentLang() === 'pt' ? 'en' : 'pt';
+      try { localStorage.setItem('lang', next); } catch (e) {}
+      applyLang(next);
+    });
+
+    // ============ Toggle de tema ============
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+
+    // ============ Spotlight + parallax do grid ============
+    (function () {
+      const root = document.documentElement;
+      const gridBg = document.querySelector('.grid-bg');
+      let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+      let rafId = null;
+      const update = () => {
+        root.style.setProperty('--mx', mx + 'px');
+        root.style.setProperty('--my', my + 'px');
+        rafId = null;
+      };
+      window.addEventListener('mousemove', (e) => {
+        mx = e.clientX; my = e.clientY;
+        if (rafId === null) rafId = requestAnimationFrame(update);
+      }, { passive: true });
+
+      // Parallax do grid header (no scroll)
+      let scrollRaf = null;
+      window.addEventListener('scroll', () => {
+        if (scrollRaf !== null || !gridBg) return;
+        scrollRaf = requestAnimationFrame(() => {
+          const y = Math.min(window.scrollY * 0.3, 120);
+          gridBg.style.setProperty('--parallax-y', y + 'px');
+          scrollRaf = null;
+        });
+      }, { passive: true });
+    })();
+
+    // ============ Scroll progress ============
+    const progressBar = document.querySelector('.scroll-progress');
+    window.addEventListener('scroll', () => {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+      progressBar.style.width = pct + '%';
+    }, { passive: true });
+
+    // ============ Efeito de digitação ============
+    const subtitleElement = document.getElementById('typing-subtitle');
+    let titles = I18N.pt.typing;
+    let titleIndex = 0, charIndex = 0, typingTimeout = null;
+
+    function restartTyping(newTitles) {
+      titles = newTitles;
+      titleIndex = 0; charIndex = 0;
+      if (typingTimeout) clearTimeout(typingTimeout);
+      subtitleElement.textContent = '';
+      type();
+    }
     function type() {
       if (charIndex < titles[titleIndex].length) {
         subtitleElement.textContent += titles[titleIndex].charAt(charIndex);
         charIndex++;
-        setTimeout(type, 100); // Velocidade da digitação
+        typingTimeout = setTimeout(type, 90);
       } else {
-        setTimeout(erase, 2000); // Tempo antes de apagar
+        typingTimeout = setTimeout(erase, 2000);
       }
     }
-
     function erase() {
       if (charIndex > 0) {
         subtitleElement.textContent = titles[titleIndex].substring(0, charIndex - 1);
         charIndex--;
-        setTimeout(erase, 50); // Velocidade para apagar
+        typingTimeout = setTimeout(erase, 45);
       } else {
         titleIndex = (titleIndex + 1) % titles.length;
-        setTimeout(type, 500); // Tempo antes de começar a digitar o próximo título
+        typingTimeout = setTimeout(type, 500);
       }
     }
-    
-    document.addEventListener('DOMContentLoaded', type);
 
-    // 2. Animação de Scroll (Scroll Reveal)
+    // ============ Filtros de projeto ============
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projects = document.querySelectorAll('.project');
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+        projects.forEach(p => {
+          const tags = (p.getAttribute('data-tags') || '').toLowerCase();
+          const show = filter === 'all' || tags.split(',').includes(filter);
+          p.classList.toggle('hidden', !show);
+        });
+      });
+    });
+
+    // ============ Scroll reveal ============
     const sections = document.querySelectorAll('.fade-in-section');
-
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          // Opcional: para a observação depois que o elemento já apareceu
-          // observer.unobserve(entry.target); 
-        }
+        if (entry.isIntersecting) entry.target.classList.add('is-visible');
       });
-    }, {
-      threshold: 0.1 // A animação começa quando 10% do elemento está visível
-    });
+    }, { threshold: 0.1 });
+    sections.forEach(section => observer.observe(section));
 
-    sections.forEach(section => {
-      observer.observe(section);
+    // ============ Inicializa idioma + typing ============
+    document.addEventListener('DOMContentLoaded', () => {
+      applyLang(currentLang());
     });
   </script>
-
 </body>
 </html>
