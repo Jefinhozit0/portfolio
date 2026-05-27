@@ -622,8 +622,39 @@
       -webkit-mask-image: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), black 0%, transparent 70%);
       mask-image: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), black 0%, transparent 70%);
     }
+    /* Em mobile o efeito continua, mas controlado pelo giroscópio */
     @media (hover: none), (pointer: coarse) {
-      .cursor-glow, .cursor-dots { display: none; }
+      .cursor-dots {
+        /* Em mobile mantemos só o glow, sem os pontos (sem cursor visível) */
+        display: none;
+      }
+    }
+
+    /* Botão de permissão de giroscópio (só aparece no iOS) */
+    .tilt-cta {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 60;
+      padding: 12px 18px;
+      border-radius: 24px;
+      background: var(--accent);
+      color: #111;
+      border: none;
+      font-weight: 600;
+      font-family: inherit;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(255, 102, 0, 0.45);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      animation: pulse-tilt 2s ease-in-out infinite;
+    }
+    .tilt-cta:active { transform: scale(0.95); }
+    @keyframes pulse-tilt {
+      0%, 100% { box-shadow: 0 6px 20px rgba(255, 102, 0, 0.45); }
+      50% { box-shadow: 0 6px 30px rgba(255, 102, 0, 0.7); }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
@@ -1011,6 +1042,66 @@
       document.documentElement.setAttribute('data-theme', next);
       try { localStorage.setItem('theme', next); } catch (e) {}
     });
+
+    // ============ Tilt do giroscópio (mobile) ============
+    (function () {
+      const isCoarse = window.matchMedia('(pointer: coarse)').matches || window.matchMedia('(hover: none)').matches;
+      if (!isCoarse || !('DeviceOrientationEvent' in window)) return;
+
+      const root = document.documentElement;
+      let targetX = window.innerWidth / 2;
+      let targetY = window.innerHeight / 2;
+      let curX = targetX, curY = targetY;
+      let rafActive = false;
+
+      function animate() {
+        curX += (targetX - curX) * 0.12;
+        curY += (targetY - curY) * 0.12;
+        root.style.setProperty('--mx', curX + 'px');
+        root.style.setProperty('--my', curY + 'px');
+        if (Math.abs(targetX - curX) > 0.5 || Math.abs(targetY - curY) > 0.5) {
+          requestAnimationFrame(animate);
+        } else {
+          rafActive = false;
+        }
+      }
+
+      function onOrientation(e) {
+        const gamma = e.gamma || 0;  // -90..90 (esquerda/direita)
+        const beta = e.beta || 0;    // -180..180 (frente/trás)
+        const g = Math.max(-25, Math.min(25, gamma));
+        const b = Math.max(20, Math.min(80, beta));
+        targetX = ((g + 25) / 50) * window.innerWidth;
+        targetY = ((b - 20) / 60) * window.innerHeight;
+        if (!rafActive) {
+          rafActive = true;
+          requestAnimationFrame(animate);
+        }
+      }
+
+      function start() {
+        window.addEventListener('deviceorientation', onOrientation, { passive: true });
+      }
+
+      // iOS 13+ exige permissão acionada por gesto do usuário
+      const needsPermission = typeof DeviceOrientationEvent.requestPermission === 'function';
+      if (needsPermission) {
+        const btn = document.createElement('button');
+        btn.className = 'tilt-cta';
+        btn.setAttribute('aria-label', 'Ativar efeito de inclinação');
+        btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L19 9 L12 16 L5 9 Z"></path><path d="M12 16 v6"></path></svg><span>Ativar movimento</span>';
+        btn.addEventListener('click', async () => {
+          try {
+            const perm = await DeviceOrientationEvent.requestPermission();
+            if (perm === 'granted') start();
+          } catch (e) {}
+          btn.remove();
+        });
+        document.body.appendChild(btn);
+      } else {
+        start();
+      }
+    })();
 
     // ============ Spotlight + parallax do grid ============
     (function () {
